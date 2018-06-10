@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
+@import 'bem';
+@import 'colors';
+@import 'container';
+
+@import './top.scss';
+@import './nav.scss';
+@import './post.scss';
+@import './sidebar.scss';
+@import './pagination.scss';
+@import './footer.scss';
+@import './newpost.scss';
+
+$font-family: 'Lato', sans-serif;
+
+html {
+  font-family: $font-family;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, input { margin: 0; }
+
+img { max-width: 100%; }
+
+main {
+  padding-top: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.posts-container {
+  flex: 1;
+  padding: 0 2rem;
+}
+
+.sidebar-container {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .sidebar-container {
+    width: 25%;
+  }
+}

@@ -1,0 +1,35 @@
+@import 'bem';
+@import 'colors';
+
+.pagination {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+
+  @include element('button') {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0.5rem;
+
+    a {
+      text-decoration: none;
+      color: $off-black;
+    }
+
+    @include modifier('hide') {
+      height: 0;
+      overflow: hidden;
+    }
+  }
+}
+#page-slider {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background: $off-black;
+  width: 2rem;
+}

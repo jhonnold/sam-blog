@@ -1,0 +1,123 @@
+@import 'bem';
+@import 'colors';
+
+.footer {
+  background: $off-black;
+  color: $off-white;
+
+  @include element('content-container') {
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include element('left') {
+    flex: 1;
+    display: flex;
+  }
+
+  @include element('right') {
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  @include element('navigate') {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  @include element('admin') {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  @include element('extra') {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    text-align: right;
+  }
+
+  @include element('header') {
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  @include element('link') {
+    text-decoration: none;
+    color: $off-white;
+    line-height: 1.5rem;
+
+    @include modifier('icon') {
+      font-size: 1.5rem;
+      margin: 0 0.5rem;
+    }
+  }
+}
+
+#login-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: none; 
+  background: rgba($off-black, 0.75);
+}
+
+.login-form {
+  @include modifier('show') {
+    display: flex !important;
+  }
+
+  @include element('header') {
+    color: $off-white;
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  @include element('form') {
+    background: $off-black;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @include element('buttons') {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  @include element('input') {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid $off-white;
+    padding: 0.25rem;
+    background: transparent;
+    margin-bottom: 1rem;
+    color: $off-white;
+    width: 100%;
+  }
+
+  @include element('button') {
+    background: none;
+    border: none;
+    color: $off-white;
+    cursor: pointer;
+    font-size: 1rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

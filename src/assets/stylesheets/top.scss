@@ -1,0 +1,32 @@
+@import 'bem';
+@import 'colors';
+
+.top {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../images/canoe.jpg);
+  background-position: bottom center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: $off-white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  @include element('header') {
+    font-size: 4rem;
+    font-weight: bold;
+  }
+
+  @include element('subheader') {
+    font-style: italic;
+    margin: 4rem 0;
+  }
+
+  .fa-chevron-down {
+    font-size: 3rem;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,32 @@
+@import 'bem';
+@import 'colors';
+
+.sidebar {
+  padding: 0 2rem;
+  width: calc(100% - 4rem);
+  border-left: 1px solid $off-white;
+  display: flex;
+  flex-direction: column;
+
+  @include element('headshot') {
+    width: 100%;
+    height: auto;
+    margin-bottom: 4rem;
+  }
+
+  @include element('header') {
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  @include element('content') {
+    color: $dark-gray;
+    line-height: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  @include element('link') {
+    text-decoration: none;
+    color: $dark-gray;
+  }
+}

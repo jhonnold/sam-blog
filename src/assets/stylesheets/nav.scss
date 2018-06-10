@@ -1,0 +1,41 @@
+@import 'bem';
+@import 'colors';
+
+.nav {
+  color: $off-black;
+
+  @include element('content') {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 3rem;
+  }
+
+  @include element('links') {
+    position: relative;
+    display: flex;
+    height: 100%;
+  }
+
+  @include element('link') {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
+
+#nav-slider {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background: $off-black;
+  width: 100px;
+}
