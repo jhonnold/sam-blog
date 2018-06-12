@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import QuillDeltaToHtmlConverter from 'quill-delta-to-html';
 
 const quillToolbar = [
   ['bold', 'italic', 'underline', 'strike'], // toggled buttons
@@ -81,12 +80,8 @@ $(document).ready(() => {
       theme: 'snow',
     });
     editor.on('text-change', function() {
-      const delta = editor.getContents();
-      const qdc = new QuillDeltaToHtmlConverter(
-        delta.ops,
-        window.opts_ || {},
-      );
-      const html = qdc.convert();
+      let html = editor.root.innerHTML;
+      html = html.replace('\n', '<br />');
       $('#post-preview').html(html);
       $('#hidden-preview').val(html);
       MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
@@ -101,12 +96,8 @@ $(document).ready(() => {
       theme: 'snow',
     });
     editor.on('text-change', function() {
-      const delta = editor.getContents();
-      const qdc = new QuillDeltaToHtmlConverter(
-        delta.ops,
-        window.opts_ || {},
-      );
-      const html = qdc.convert();
+      let html = editor.root.innerHTML;
+      html = html.replace('\n', '<br />');
       $('#post-body').html(html);
       $('#hidden-body').val(html);
       MathJax.Hub.Queue(['Typeset', MathJax.Hub]);

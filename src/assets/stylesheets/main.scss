@@ -30,6 +30,15 @@ h1, h2, h3, h4, h5, h6, p, input { margin: 0; }
 
 img { max-width: 100%; }
 
+pre {
+  max-width: 100%;
+  overflow: auto;
+  margin: 0;
+  padding: 0.5rem;
+  background: $off-black;
+  color: $off-white;
+}
+
 main {
   padding-top: 4rem;
   display: flex;
@@ -39,6 +48,7 @@ main {
 .posts-container {
   flex: 1;
   padding: 0 2rem;
+  max-width: calc(75% - 4rem);
 }
 
 .sidebar-container {
