@@ -81,7 +81,7 @@ $(document).ready(() => {
     });
     editor.on('text-change', function() {
       let html = editor.root.innerHTML;
-      html = html.replace('\n', '<br />');
+      html = html.replace(/\n/g, '<br />');
       $('#post-preview').html(html);
       $('#hidden-preview').val(html);
       MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
@@ -97,7 +97,7 @@ $(document).ready(() => {
     });
     editor.on('text-change', function() {
       let html = editor.root.innerHTML;
-      html = html.replace('\n', '<br />');
+      html = html.replace(/\n/g, '<br />');
       $('#post-body').html(html);
       $('#hidden-body').val(html);
       MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
