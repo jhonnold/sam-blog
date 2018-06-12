@@ -6,9 +6,7 @@ class PostsController < ApplicationController
       optional(:category) { |c| ["math", "programming", "outdoors", "other"].includes?(c) }
     end
 
-    unless query_params.valid?
-      return redirect_to "/"
-    end
+    return redirect_to "/" unless query_params.valid?
 
     valid_params = query_params.validate!
     category = valid_params["category"]
