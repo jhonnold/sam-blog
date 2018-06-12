@@ -46,6 +46,8 @@ class PostsController < ApplicationController
   end
 
   def create
+    return redirect_to "/" unless session[:logged_in]
+
     post_params = params.validation do
       required(:title) { |p| !p.nil? && !p.empty? }
       required(:category) { |p| !p.nil? }
