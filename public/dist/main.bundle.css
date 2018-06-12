@@ -73,7 +73,8 @@
 
 .post-container {
   flex: 1;
-  padding: 0 2rem; }
+  padding: 0 2rem;
+  max-width: calc(100% - 4rem); }
 
 .post {
   margin-bottom: 4rem;
