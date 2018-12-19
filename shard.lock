@@ -18,7 +18,7 @@ shards:
 
   cli:
     github: amberframework/cli
-    version: 0.7.0
+    version: 0.7.2
 
   compiled_license:
     github: elorest/compiled_license
@@ -26,15 +26,15 @@ shards:
 
   db:
     github: crystal-lang/crystal-db
-    version: 0.5.0
+    version: 0.5.1
 
   email:
     github: arcage/crystal-email
-    version: 0.2.5
+    version: 0.3.2
 
   faker:
     github: askn/faker
-    version: 0.3.0
+    version: 0.4.0
 
   garnet_spec:
     github: amberframework/garnet-spec
@@ -46,7 +46,7 @@ shards:
 
   i18n:
     github: TechMagister/i18n.cr
-    version: 0.1.0
+    version: 0.2.0
 
   inflector:
     github: phoffer/inflector.cr
@@ -54,7 +54,7 @@ shards:
 
   jasper_helpers:
     github: amberframework/jasper-helpers
-    version: 0.2.0
+    version: 0.2.3
 
   kilt:
     github: jeromegn/kilt
@@ -62,7 +62,7 @@ shards:
 
   micrate:
     github: amberframework/micrate
-    version: 0.3.1
+    version: 0.3.3
 
   mysql:
     github: crystal-lang/crystal-mysql
@@ -78,7 +78,7 @@ shards:
 
   quartz_mailer:
     github: amberframework/quartz-mailer
-    version: 0.5.1
+    version: 0.5.2
 
   redis:
     github: stefanwille/crystal-redis

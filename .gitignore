@@ -11,3 +11,4 @@ production.yml
 /bin/
 /node_modules
 /logs
+/crystal_0.24.1/
