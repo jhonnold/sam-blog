@@ -1,5 +1,5 @@
 secret_key_base: Y5cxuvL1-5C6ol_yRsrgwzWxGr-jC1weM7L0XmO39Js
-port: 5000
+port: 8000
 name: sam-blog
 logging:
   severity: debug
