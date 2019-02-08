@@ -1,12 +1,6 @@
 @import 'bem';
 @import 'colors';
 
-.post-container {
-  flex: 1;
-  padding: 0 2rem;
-  max-width: calc(100% - 4rem);
-}
-
 .post {
   margin-bottom: 4rem;
   width: 100%;
@@ -22,6 +16,7 @@
 
   @include element('meta') {
     display: flex;
+    flex-wrap: wrap;
     margin-top: 0.5rem;
 
     p {

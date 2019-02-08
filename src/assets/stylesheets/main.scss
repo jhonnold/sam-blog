@@ -51,8 +51,22 @@ main {
   max-width: calc(100% - 4rem);
 }
 
+.post-container {
+  flex: 1;
+  padding: 0 2rem;
+  max-width: calc(100% - 4rem);
+}
+
 @media (min-width: 768px) {
   .posts-container {
+    max-width: calc(75% - 4rem);
+  }
+
+  .post-container {
+    max-width: calc(100% - 4rem);
+  }
+
+  .new-post-container {
     max-width: calc(75% - 4rem);
   }
 }

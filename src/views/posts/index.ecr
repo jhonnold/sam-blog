@@ -1,110 +1,51 @@
-<main class="container">
-  <div class="posts-container">
-    <%- posts.each do |post| %>
-      <article class="post">
-        <h5 class="post__header"><%= post.title %></h5>
-        <span class="post__meta">
-          <p class="post__meta--italic">posted in</p>
-          <p class="post__meta--underline">
-            <%= post.category %>
-          </p>
-          <p class="post__meta--italic">on</p>
-          <p class="post__meta--underline"><%= format_time(post.created_at) %></p>
-          <p class="post__meta--italic">by</p>
-          <p class="post__meta--underline">Sam Miller</p>
-        </span>
-        <div class="post__content"><%= post.preview %></div>
-        <a class="post__readmore" href="/posts/<%= post.id %>">
-          <i class="fas fa-angle-right"></i> Read More
-        </a>
-      </article>
+<div class="posts-container">
+  <%- posts.each do |post| %>
+    <article class="post">
+      <h5 class="post__header"><%= post.title %></h5>
+      <span class="post__meta">
+        <p class="post__meta--italic">posted on</p>
+        <!-- <p class="post__meta--underline">
+          <%= post.category %>
+        </p> -->
+        <!-- <p class="post__meta--italic">on</p> -->
+        <p class="post__meta--underline"><%= format_time(post.created_at) %></p>
+        <p class="post__meta--italic">by</p>
+        <p class="post__meta--underline">Sam Miller</p>
+      </span>
+      <div class="post__content"><%= post.preview %></div>
+      <a class="post__readmore" href="/posts/<%= post.id %>">
+        Read More
+      </a>
+    </article>
+  <%- end %>
+  <div class="pagination">
+    <div id="page-slider"></div>
+    <%- pages.each_with_index do |p, i| %>
+      <%- hide = p.nil? ? "pagination__button--hide" : "" %>
+      <%- if (i == 0) %>
+        <div class="pagination__button <%= hide %>">
+          <a href="/posts">
+            <i class="fas fa-angle-double-left"></i>
+          </a>
+        </div>
+      <%- end %>
+      <%- if (i == 2) %>
+        <div class="pagination__button <%= hide %>" id="active-page">
+      <%- else %>
+        <div class="pagination__button <%= hide %>">
+      <%- end %>
+          <a href="/posts?page=<%= p %>">
+            <%= p %>
+          </a>
+        </div> 
+      <%- if (i == 4) %>
+        <div class="pagination__button <%= hide %>">
+          <a href="/posts?page=<%= (count / 5_f32).ceil.to_i %>">
+            <i class="fas fa-angle-double-right"></i>
+          </a>
+        </div>
+      <%- end %>
     <%- end %>
-    <div class="pagination">
-      <div id="page-slider"></div>
-      <%- hide = pages[0].nil? ? "pagination__button--hide" : "" %>
-      <div class="pagination__button <%= hide %>">
-        <a href="/posts?page=1">
-          <i class="fas fa-angle-double-left"></i>
-        </a>
-      </div>
-      <%- hide = pages[0].nil? ? "pagination__button--hide" : "" %>
-      <div class="pagination__button <%= hide %>">
-        <a href="/posts?page=<%= pages[0] %>">
-          <%= pages[0] %>
-        </a>
-      </div>
-      <%- hide = pages[1].nil? ? "pagination__button--hide" : "" %>
-      <div class="pagination__button <%= hide %>">
-        <a href="/posts?page=<%= pages[1] %>">
-          <%= pages[1] %>
-        </a>
-      </div>
-      <%- hide = pages[2].nil? ? "pagination__button--hide" : "" %>
-      <div class="pagination__button <%= hide %>" id="active-page">
-        <a href="/posts?page=<%= pages[2] %>">
-          <%= pages[2] %>
-        </a>
-      </div>
-      <%- hide = pages[3].nil? ? "pagination__button--hide" : "" %>
-      <div class="pagination__button <%= hide %>">
-        <a href="/posts?page=<%= pages[3] %>">
-          <%= pages[3] %>
-        </a>
-      </div>
-      <%- hide = pages[4].nil? ? "pagination__button--hide" : "" %>
-      <div class="pagination__button <%= hide %>">
-        <a href="/posts?page=<%= pages[4] %>">
-          <%= pages[4] %>
-        </a>
-      </div>
-      <%- hide = pages[4].nil? ? "pagination__button--hide" : "" %>
-      <div class="pagination__button <%= hide %>">
-        <a href="/posts?page=<%= (count / 5_f32).ceil.to_i %>">
-          <i class="fas fa-angle-double-right"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="sidebar-container">
-    <div class="sidebar">
-      <div>
-        <img class="sidebar__headshot" src="/dist/images/headshot2.jpg" />
-      </div>
-      <span class="sidebar__header">
-        About Me
-      </span>
-      <p class="sidebar__content">
-        Cras purus sapien, mollis non vehicula vel, finibus ut odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed blandit tellus quis sapien posuere venenatis. 
-      </p>
-      <!-- <span class="sidebar__header">
-        Categories
-      </span>
-      <span class="sidebar__content" style="margin-bottom: 0">
-        <p>
-          <a class="sidebar__link" href="/posts?category=math">
-            <i class="fas fa-angle-right"></i> Math
-          </a>
-        </p>
-        <p>
-          <a class="sidebar__link" href="/posts?category=programming">
-            <i class="fas fa-angle-right"></i> Programming
-          </a>
-        </p>
-        <p>
-          <a class="sidebar__link" href="/posts?category=outdoors">
-            <i class="fas fa-angle-right"></i> Outdoors
-          </a>
-        </p>
-        <p>
-          <a class="sidebar__link" href="/posts?category=other">
-            <i class="fas fa-angle-right"></i> Other
-          </a>
-        </p>
-      </span> -->
-    </div>
-    <!-- Added padding to the bottom without a border -->
-    <div style="height: 4rem;"></div>
   </div>
 </div>
-</main>
 

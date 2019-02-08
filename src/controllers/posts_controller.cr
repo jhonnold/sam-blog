@@ -9,7 +9,6 @@ class PostsController < ApplicationController
 
     valid_params = query_params.validate!
     page = valid_params.has_key?("page") ? valid_params["page"].to_s.to_i : 1
-    # page = valid_params[:page].nil? ? 1 : valid_params[:page].to_s.to_i
     offset = (page.to_s.to_i - 1) * 5
 
     posts = Post.all("ORDER BY id DESC LIMIT 5 OFFSET ?", [offset])
@@ -43,7 +42,6 @@ class PostsController < ApplicationController
 
     post_params = params.validation do
       required(:title) { |p| !p.nil? && !p.empty? }
-      required(:category) { |p| !p.nil? }
       required(:preview) { |p| !p.nil? && !p.empty? }
       required(:body) { |p| !p.nil? && !p.empty? }
     end

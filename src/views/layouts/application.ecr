@@ -13,7 +13,10 @@
 
     <%= render(partial: "layouts/_header.ecr") %>
     <%= render(partial: "layouts/_nav.ecr") %>
-    <%= content %>
+    <main class="container">
+      <%= content %>
+      <%= render(partial: "layouts/_sidebar.ecr") %>
+    </main>
     <%= render(partial: "layouts/_footer.ecr") %>
 
     <script type="text/x-mathjax-config"> 
