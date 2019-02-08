@@ -1,0 +1,68 @@
+@import 'bem';
+@import 'colors';
+
+.post-container {
+  flex: 1;
+  padding: 0 2rem;
+  max-width: calc(100% - 4rem);
+}
+
+.post {
+  margin-bottom: 4rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: $dark-gray;
+
+  @include element('header') {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: $off-black;
+  }
+
+  @include element('meta') {
+    display: flex;
+    margin-top: 0.5rem;
+
+    p {
+      margin: 0 0.125rem;
+      color: $light-gray;
+    }
+
+    @include modifier('underline') {
+      text-decoration: underline;
+      text-transform: capitalize;
+    }
+
+    @include modifier('italic') {
+      font-style: italic;
+    }
+  }
+
+  @include element('content') {
+    margin-top: 1rem;
+    line-height: 1.5rem;
+  }
+
+  @include element('readmore') {
+    margin-top: 1rem;
+    text-decoration: none;
+    color: $light-gray;
+    display: flex;
+    align-items: center;
+
+    i { margin-right: 0.25rem; }
+  }
+
+  @include element('back-container') {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  @include element('back') {
+    text-decoration: none;
+    color: $off-black;
+    margin-bottom: 4rem;
+  }
+}
