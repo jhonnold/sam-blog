@@ -28,7 +28,10 @@ Amber::Server.configure do
   end
 
   routes :web do
-    get "/", HomeController, :index
+    get "/contact", HomeController, :contact
+    get "/about", HomeController, :about
+    get "/logout", HomeController, :logout
+    post "/login", HomeController, :login
   end
 
   routes :api do

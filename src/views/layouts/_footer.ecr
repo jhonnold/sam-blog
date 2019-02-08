@@ -1,0 +1,58 @@
+<div class="footer">
+  <div class="container">
+    <div class="footer__content-container">
+      <div class="footer__left">
+        <div class="footer__navigate">
+          <span class="footer__header">Navigate</span>
+          <a class="footer__link" href="/posts">Home</a>
+          <a class="footer__link" href="/posts?category=math">Math</a>
+          <a class="footer__link" href="/posts?category=programming">Programming</a>
+          <a class="footer__link" href="/posts?category=outdoors">Outdoors</a>
+          <a class="footer__link" href="/posts?category=other">Other</a>
+          <a class="footer__link" href="/about">About</a>
+          <a class="footer__link" href="/contact">Contact</a>
+        </div>
+        <div class="footer__admin">
+          <span class="footer__header">Admin</span>
+          <% if session[:logged_in] %>
+            <a class="footer__link" href="/logout">Logout</a>
+            <a class="footer__link" href="/posts/new">Create</a>
+          <% else %>
+            <a class="footer__link" href="javascript:toggleLoginForm()">Login</a>
+          <% end %>
+        </div>
+      </div>
+      <div class="footer__right">
+        <div class="footer__extra">
+          <span class="footer__header">
+            Designed by Jay Honnold
+          </span>
+          <div style="margin-bottom: 1rem;">
+            <a class="footer__link footer__link--icon" href="https://github.com/jhonnold">
+              <i class="fab fa-github"></i>
+            </a>
+            <a class="footer__link footer__link--icon" href="https://www.linkedin.com/in/jay-honnold-123275140/">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
+          <span class="footer__header">
+            Created with
+          </span>
+          <a class="footer__link" href="https://amberframework.org">Amber</a>
+          <a class="footer__link" href="https://crystal-lang.org">Crystal</a>
+        </div> 
+      </div>
+    </div>
+  </div>
+  <div id="login-form">
+    <form class="login-form__form" method="post" action="/login">
+      <span class="login-form__header">Please enter the admin password...</span>
+      <%= csrf_tag %>
+      <input type="password" name="password" class="login-form__input" />
+      <div class="login-form__buttons">
+        <div class="login-form__button" onclick="javascript:toggleLoginForm()">Cancel</div>
+        <input type="submit" class="login-form__button" value="Login" />
+      </div>
+    </form>
+  </div>
+</div>

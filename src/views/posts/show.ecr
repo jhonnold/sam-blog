@@ -1,0 +1,25 @@
+<main class="container">
+  <div class="post-container">
+    <article class="post">
+      <h5 class="post__header"><%= post.title %></h5>
+      <span class="post__meta">
+        <p class="post__meta--italic">posted in</p>
+        <a href="/posts?category=<%= post.category %>">
+          <p class="post__meta--underline">
+            <%= post.category %>
+          </p>
+        </a>
+        <p class="post__meta--italic">on</p>
+        <p class="post__meta--underline"><%= format_time(post.created_at) %></p>
+        <p class="post__meta--italic">by</p>
+        <p class="post__meta--underline">Sam Miller</p>
+      </span>
+      <div class="post__content"><%= post.body %></div>
+    </article>
+    <div class="post__back-container">
+      <a class="post__back" href="javascript:history.back()">
+        <i class="fas fa-angle-left"></i> Back
+      </a>
+    </div>
+  </div>
+</main>

@@ -1,4 +1,38 @@
-<%- active = context.request.path == "/" ? "active" : "" %>
-<li class="nav-item <%= active %>">
-  <a href="/" class="nav-link">Home</a>
-</li>
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav__content">
+      <div class="nav__links">
+        <div id="nav-slider"></div>
+        <span class="nav__link nav__link--text" id="nav-home">
+          <a href="/posts">Home</a>
+        </span>
+        <span class="nav__link nav__link--text" id="nav-categories">
+          Categories
+        </span>
+        <span class="nav__link nav__link--text" id="nav-about">
+          <a href="/about">About</a>
+        </span>
+        <span class="nav__link nav__link--text" id="nav-contact">
+          <a href="/contact">Contact</a>
+        </span>
+      </div>
+      <div class="nav__links">
+        <!-- <span class="nav__link">
+          <a href="#">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </span> -->
+        <span class="nav__link">
+          <a href="https://soundcloud.com/samkmiller">
+            <i class="fab fa-soundcloud"></i>
+          </a>
+        </span>
+        <span class="nav__link">
+          <a href="https://github.com/redrot">
+            <i class="fab fa-github"></i>
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="new-post-container">
+    <form method="post" action="/posts">
+      <%= csrf_tag %>
+      <div class="new-post-container__top-section">
+        <div class="new-post-container__title">
+          <span class="new-post-container__header">Title</span>
+          <textarea name="title"></textarea>
+        </div>
+        <div class="new-post-container__category">
+          <span class="new-post-container__header">Category</span>  
+          <label for="math-radio">
+            <input type="radio" name="category" value="math" id="math-radio" />
+            Math
+          </label>
+          <label for="programming-radio">
+            <input type="radio" name="category" value="programming" id="programming-radio" />
+            Programming
+          </label>
+          <label for="outdoor-radio">
+            <input type="radio" name="category" value="outdoor" id="outdoor-radio" />
+            Outdoor
+          </label>
+          <label for="other-radio">
+            <input type="radio" name="category" value="other" id="other-radio" />
+            Other
+          </label>
+        </div>
+      </div>
+      <span class="new-post-container__header">Post Preview</span>
+      <input id="hidden-preview" name="preview" style="display: none" />
+      <div id="new-post-preview"></div>
+      <span class="new-post-container__header">Post Body</span>
+      <input id="hidden-body" name="body" style="display: none" />
+      <div id="new-post-body"></div>
+      <span class="new-post-container__header">Post Preview Formatted</span>
+      <div class="post__content" id="post-preview"></div>
+      <span class="new-post-container__header">Post Body Formatted</span>
+      <div class="post__content" id="post-body"></div>
+      <div class="new-post-container__submit">
+        <button type="submit">
+           <i class="fas fa-angle-right"></i> Create
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -2,40 +2,31 @@
 <html>
   <head>
     <title>Sam Blog using Amber</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.5/quill.snow.css">
     <link rel="stylesheet" href="/dist/main.bundle.css">
-    <link rel="apple-touch-icon" href="/favicon.png">
-    <link rel="icon" href="/favicon.png">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
   </head>
   <body>
-    <nav class="navbar navbar-expand navbar-dark bg-primary">
-      <div class="container">
-        <a href="/" class="navbar-brand">
-          <img src="/dist/images/logo.svg" height="30" alt="Amber logo">
-        </a>
-        <ul class="navbar-nav mr-auto">
-          <%= render(partial: "layouts/_nav.ecr") %>
-        </ul>
-      </div>
-    </nav>
 
-    <div class="container">
-      <%- flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>" role="alert">
-          <%= flash[key] %>
-        </div>
-      <%- end %>
+    <%= render(partial: "layouts/_header.ecr") %>
+    <%= render(partial: "layouts/_nav.ecr") %>
+    <%= content %>
+    <%= render(partial: "layouts/_footer.ecr") %>
 
-      <div class="main">
-        <%= content %>
-      </div>
-    </div>
-
+    <script type="text/x-mathjax-config"> 
+      MathJax.Hub.Config({
+        tex2jax: { 
+          inlineMath: [['\$$','\$$'], ['\[;','\;]']], 
+          processEscapes: true, 
+          ignoreClass: 'ql-editor' 
+        }
+      });
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+    <script src="https://cdn.quilljs.com/1.3.5/quill.min.js"></script>
     <script src="/dist/main.bundle.js"></script>
-
-    <%- if Amber.settings.auto_reload? -%><script src="/js/client_reload.js"></script><%- end -%>
   </body>
 </html>
