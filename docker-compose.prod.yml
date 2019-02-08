@@ -9,7 +9,7 @@ services:
     command: bin/sam-blog
     environment:
       AMBER_ENV: production
-      DATABASE_URL: postgres://postgres@db:5432/sam_blog
+      DATABASE_URL: postgres://admin:password@db:5432/sam_blog
       BLOG_PASSWORD: ${BLOG_PASSWORD}
     ports:
       - 80:80
@@ -17,8 +17,8 @@ services:
       - db
     volumes:
     - .:/app
-    - nodes:/app/node_modules
-    - shards:/app/lib
+    - nodes-prod:/app/node_modules
+    - shards-prod:/app/lib
 
   migrate:
     build:
@@ -27,7 +27,7 @@ services:
     image: sam-blog-prod
     command: bash -c 'while ! nc -q 1 db 5432 </dev/null; do sleep 1; done'
     environment:
-      DATABASE_URL: postgres://postgres@db:5432/sam_blog
+      DATABASE_URL: postgres://admin:password@db:5432/sam_blog
     volumes:
       - .:/app
     links:
@@ -36,12 +36,13 @@ services:
   db:
     image: postgres
     environment:
-      POSTGRES_USER: postgres
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
       POSTGRES_DB: sam_blog
     volumes:
-      - db:/var/lib/postgres/data
+      - db-prod:/var/lib/postgres/data
 
 volumes:
-  db:
-  nodes:
-  shards:
+  db-prod:
+  nodes-prod:
+  shards-prod:
