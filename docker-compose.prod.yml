@@ -1,0 +1,46 @@
+version: '2'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: DockerfileProd
+    image: sam-blog-prod
+    command: bin/sam-blog
+    environment:
+      AMBER_ENV: production
+      DATABASE_URL: postgres://postgres@db:5432/sam_blog
+    ports:
+      - 80:80
+    links:
+      - db
+    volumes:
+    - .:/app
+    - nodes:/app/node_modules
+    - shards:/app/lib
+
+  migrate:
+    build:
+      context: .
+      dockerfile: DockerfileProd
+    image: sam-blog-prod
+    command: bash -c 'while ! nc -q 1 db 5432 </dev/null; do sleep 1; done'
+    environment:
+      DATABASE_URL: postgres://postgres@db:5432/sam_blog
+    volumes:
+      - .:/app
+    links:
+      - db
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: sam_blog
+    volumes:
+      - db:/var/lib/postgres/data
+
+volumes:
+  db:
+  nodes:
+  shards:
