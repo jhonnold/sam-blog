@@ -5,11 +5,9 @@
         <h5 class="post__header"><%= post.title %></h5>
         <span class="post__meta">
           <p class="post__meta--italic">posted in</p>
-          <a href="/posts?category=<%= post.category %>">
-            <p class="post__meta--underline">
-              <%= post.category %>
-            </p>
-          </a>
+          <p class="post__meta--underline">
+            <%= post.category %>
+          </p>
           <p class="post__meta--italic">on</p>
           <p class="post__meta--underline"><%= format_time(post.created_at) %></p>
           <p class="post__meta--italic">by</p>
@@ -23,46 +21,45 @@
     <%- end %>
     <div class="pagination">
       <div id="page-slider"></div>
-      <%- category_param = category.nil? ? "" : "&category=#{category}" %> 
       <%- hide = pages[0].nil? ? "pagination__button--hide" : "" %>
       <div class="pagination__button <%= hide %>">
-        <a href="/posts?page=1<%= category_param %>">
+        <a href="/posts?page=1">
           <i class="fas fa-angle-double-left"></i>
         </a>
       </div>
       <%- hide = pages[0].nil? ? "pagination__button--hide" : "" %>
       <div class="pagination__button <%= hide %>">
-        <a href="/posts?page=<%= pages[0] %><%= category_param %>">
+        <a href="/posts?page=<%= pages[0] %>">
           <%= pages[0] %>
         </a>
       </div>
       <%- hide = pages[1].nil? ? "pagination__button--hide" : "" %>
       <div class="pagination__button <%= hide %>">
-        <a href="/posts?page=<%= pages[1] %><%= category_param %>">
+        <a href="/posts?page=<%= pages[1] %>">
           <%= pages[1] %>
         </a>
       </div>
       <%- hide = pages[2].nil? ? "pagination__button--hide" : "" %>
       <div class="pagination__button <%= hide %>" id="active-page">
-        <a href="/posts?page=<%= pages[2] %><%= category_param %>">
+        <a href="/posts?page=<%= pages[2] %>">
           <%= pages[2] %>
         </a>
       </div>
       <%- hide = pages[3].nil? ? "pagination__button--hide" : "" %>
       <div class="pagination__button <%= hide %>">
-        <a href="/posts?page=<%= pages[3] %><%= category_param %>">
+        <a href="/posts?page=<%= pages[3] %>">
           <%= pages[3] %>
         </a>
       </div>
       <%- hide = pages[4].nil? ? "pagination__button--hide" : "" %>
       <div class="pagination__button <%= hide %>">
-        <a href="/posts?page=<%= pages[4] %><%= category_param %>">
+        <a href="/posts?page=<%= pages[4] %>">
           <%= pages[4] %>
         </a>
       </div>
       <%- hide = pages[4].nil? ? "pagination__button--hide" : "" %>
       <div class="pagination__button <%= hide %>">
-        <a href="/posts?page=<%= (count / 5_f32).ceil.to_i %><%= category_param %>">
+        <a href="/posts?page=<%= (count / 5_f32).ceil.to_i %>">
           <i class="fas fa-angle-double-right"></i>
         </a>
       </div>
@@ -79,7 +76,7 @@
       <p class="sidebar__content">
         Cras purus sapien, mollis non vehicula vel, finibus ut odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed blandit tellus quis sapien posuere venenatis. 
       </p>
-      <span class="sidebar__header">
+      <!-- <span class="sidebar__header">
         Categories
       </span>
       <span class="sidebar__content" style="margin-bottom: 0">
@@ -103,7 +100,7 @@
             <i class="fas fa-angle-right"></i> Other
           </a>
         </p>
-      </span>
+      </span> -->
     </div>
     <!-- Added padding to the bottom without a border -->
     <div style="height: 4rem;"></div>

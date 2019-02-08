@@ -30,12 +30,14 @@ function getURLParameter(name) {
 
 $(document).ready(() => {
 
-  if ((window.location.pathname !== '/') || 
-      (getURLParameter('page') !== null && +getURLParameter('page') !== 1)) {
-    const offset = $('#nav').offset().top;
-    if (offset > window.scrollY)
-      $('html, body').animate({ scrollTop: $('#nav').offset().top }, 500); //.scrollTop(window.innerHeight);
-  }
+  // if ((window.location.pathname !== '/') || (window.location.pathname !== '/posts') ||
+  //     (getURLParameter('page') !== null && +getURLParameter('page') !== 1)) {
+  //   // const offset = $('#nav').offset().top;
+  //   // if (offset > window.scrollY)
+  //   //   $('html, body').animate({ scrollTop: $('#nav').offset().top }, 500); //.scrollTop(window.innerHeight);
+  //   $('#header').css({ height: '15rem' });
+  //   $('#chevron-down').css({ display: 'none' });
+  // }
 
   $('#chevron-down').click(() => {
     const offset = $('#nav').offset().top;
