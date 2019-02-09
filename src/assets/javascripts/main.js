@@ -1,17 +1,5 @@
 import $ from 'jquery';
 
-const quillToolbar = [
-  ['bold', 'italic', 'underline', 'strike'], // toggled buttons
-  ['blockquote', 'code-block'],
-  [{ list: 'ordered' }, { list: 'bullet' }],
-  [{ script: 'sub' }, { script: 'super' }], // superscript/subscript
-  [{ indent: '-1' }, { indent: '+1' }], // outdent/indent
-  [{ direction: 'rtl' }], // text direction
-  [{ align: [] }],
-  ['link', 'image'],
-  ['clean'], // remove formatting button
-];
-
 function getActiveNavLink() {
   if (/about/.test(window.location.pathname)) {
     return $('#nav-about');
@@ -126,36 +114,4 @@ $(document).ready(() => {
   window.toggleLoginForm = function() {
     $('#login-form').toggleClass('login-form--show');
   };
-
-  if ($('#new-post-preview').length) {
-    const editor = new Quill('#new-post-preview', {
-      modules: {
-        toolbar: quillToolbar,
-      },
-      theme: 'snow',
-    });
-    editor.on('text-change', function() {
-      let html = editor.root.innerHTML;
-      html = html.replace(/\n/g, '<br />');
-      $('#post-preview').html(html);
-      $('#hidden-preview').val(html);
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
-    });
-  }
-
-  if ($('#new-post-body').length) {
-    const editor = new Quill('#new-post-body', {
-      modules: {
-        toolbar: quillToolbar,
-      },
-      theme: 'snow',
-    });
-    editor.on('text-change', function() {
-      let html = editor.root.innerHTML;
-      html = html.replace(/\n/g, '<br />');
-      $('#post-body').html(html);
-      $('#hidden-body').val(html);
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
-    });
-  }
 });

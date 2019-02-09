@@ -58,17 +58,24 @@ class PostsController < ApplicationController
   end
 
   def edit
+    return redirect_back unless params[:id].to_i? && session[:logged_in]
+
+    post = Post.find(params[:id])
+    return redirect_back if post.nil?
+    
+    render "edit.ecr"
   end
 
   def update
   end
 
   def destroy
+    return redirect_back unless session[:logged_in]
     if (params[:id].to_i?)
       post = Post.find(params[:id])
       post.destroy unless post.nil?
     end
-    return :index
+    redirect_back
   end
 
   def home

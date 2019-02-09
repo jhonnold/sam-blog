@@ -1,9 +1,9 @@
 <div class="new-post-container">
-  <form method="post" action="/posts">
+  <form method="post" action="/posts/<%= post.id %>">
     <%= csrf_tag %>
     <div class="new-post-container__title">
       <span class="new-post-container__header">Title</span>
-      <textarea name="title"></textarea>
+      <textarea name="title"><%= post.title %></textarea>
     </div>
     <span class="new-post-container__header">Post Preview</span>
     <input id="hidden-preview" name="preview" style="display: none" />
@@ -17,7 +17,7 @@
     <div class="post__content" id="post-body"></div>
     <div class="new-post-container__submit">
       <button type="submit">
-        <i class="fas fa-angle-right"></i> Create
+        <i class="fas fa-angle-right"></i> Edit
       </button>
     </div>
   </form>
@@ -42,6 +42,7 @@
     },
     theme: 'snow',
   });
+  var preview = `<%= post.preview %>`;
   editor.on('text-change', function() {
     let html = editor.root.innerHTML;
     html = html.replace(/\n/g, '<br />');
@@ -49,6 +50,7 @@
     document.getElementById('hidden-preview').value = html;
     MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
   });
+  editor.setText(preview);
 
   var editor2 = new Quill('#new-post-body', {
     modules: {
@@ -56,6 +58,7 @@
     },
     theme: 'snow',
   });
+  var body = `<%= post.body %>`;
   editor2.on('text-change', function() {
     let html = editor2.root.innerHTML;
     html = html.replace(/\n/g, '<br />');
@@ -63,4 +66,5 @@
     document.getElementById('hidden-body').value = html;
     MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
   });
+  editor2.setText(body);
 </script>

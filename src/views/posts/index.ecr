@@ -14,7 +14,7 @@
           <p class="post__meta--underline">Sam Miller</p>
         </span>
         <span class="post__buttons">
-          <button onclick="javascript:window.deletePost(<%= post.id %>)">Delete</button>
+          <a onclick="javascript:window.deletePost(<%= post.id %>)">Delete</a>
         </span>
       </div>
       <div class="post__content"><%= post.preview %></div>
