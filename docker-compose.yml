@@ -6,7 +6,7 @@ services:
     image: sam-blog
     command: amber watch
     environment:
-      DATABASE_URL: postgres://admin:password@db:5432/sam_blog_development
+      AMBER_ENV: development
       BLOG_PASSWORD: ${BLOG_PASSWORD}
     ports:
       - 3000:3000
@@ -21,8 +21,6 @@ services:
     build: .
     image: sam-blog
     command: bash -c 'while ! nc -q 1 db 5432 </dev/null; do sleep 1; done && amber db migrate seed'
-    environment:
-      DATABASE_URL: postgres://admin:password@db:5432/sam_blog_development
     volumes:
       - .:/app
     links:
@@ -31,8 +29,7 @@ services:
   db:
     image: postgres
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
       POSTGRES_DB: sam_blog_development
     volumes:
       - db:/var/lib/postgres/data

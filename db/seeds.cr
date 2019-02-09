@@ -1,7 +1,7 @@
 require "../config/application.cr"
 require "faker"
 
-93.times do |i|
+6.times do |i|
   post = Post.new
   post.title = Faker::Lorem.sentence
   post.preview = Faker::Lorem.paragraph 5, true, 10

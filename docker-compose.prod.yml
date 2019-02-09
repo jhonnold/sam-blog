@@ -6,10 +6,9 @@ services:
       context: .
       dockerfile: DockerfileProd
     image: sam-blog-prod
-    command: bin/sam-blog
+    command: bash -c 'shards build sam-blog --release && bin/sam-blog'
     environment:
       AMBER_ENV: production
-      DATABASE_URL: postgres://admin:password@db:5432/sam_blog
       BLOG_PASSWORD: ${BLOG_PASSWORD}
     ports:
       - 80:80
@@ -17,17 +16,17 @@ services:
       - db
     volumes:
     - .:/app
-    - nodes-prod:/app/node_modules
-    - shards-prod:/app/lib
+    - nodes:/app/node_modules
+    - shards:/app/lib
 
   migrate:
     build:
       context: .
       dockerfile: DockerfileProd
     image: sam-blog-prod
-    command: bash -c 'while ! nc -q 1 db 5432 </dev/null; do sleep 1; done'
+    command: bash -c 'while ! nc -q 1 db 5432 </dev/null; do sleep 1; done && amber db migrate'
     environment:
-      DATABASE_URL: postgres://admin:password@db:5432/sam_blog
+      AMBER_ENV: production
     volumes:
       - .:/app
     links:
@@ -36,13 +35,12 @@ services:
   db:
     image: postgres
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
       POSTGRES_DB: sam_blog
     volumes:
-      - db-prod:/var/lib/postgres/data
+      - db:/var/lib/postgres/data
 
 volumes:
-  db-prod:
-  nodes-prod:
-  shards-prod:
+  db:
+  nodes:
+  shards:
