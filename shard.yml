@@ -41,10 +41,10 @@ dependencies:
     github: amberframework/citrine-i18n
     version: 0.3.2
 
-  faker:
-    github: askn/faker
-
 development_dependencies:
   garnet_spec:
     github: amberframework/garnet-spec
     version: ~> 0.2.1
+  
+  faker:
+    github: askn/faker

@@ -4,9 +4,9 @@ services:
   app:
     build:
       context: .
-      dockerfile: DockerfileProd
+      dockerfile: Dockerfile.prod
     image: sam-blog-prod
-    command: bash -c 'shards build sam-blog --release && bin/sam-blog'
+    command: bin/sam-blog
     environment:
       AMBER_ENV: production
       BLOG_PASSWORD: ${BLOG_PASSWORD}
@@ -22,7 +22,7 @@ services:
   migrate:
     build:
       context: .
-      dockerfile: DockerfileProd
+      dockerfile: Dockerfile.prod
     image: sam-blog-prod
     command: bash -c 'while ! nc -q 1 db 5432 </dev/null; do sleep 1; done && amber db migrate'
     environment:

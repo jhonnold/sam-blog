@@ -1,0 +1,15 @@
+FROM amberframework/amber:v0.11.3
+
+WORKDIR /app
+
+COPY shard.* /app/
+RUN shards install --production
+
+COPY . /app
+
+RUN npm install && \
+    npm run release && \
+    rm -rf /app/node_modules
+
+RUN shards build sam-blog --release
+CMD ["bin/sam-blog"]
