@@ -25,11 +25,16 @@ function getActiveNavLink() {
 }
 
 function getURLParameter(name) {
-  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+  return (
+    decodeURIComponent(
+      (new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(
+        location.search
+      ) || [null, ''])[1].replace(/\+/g, '%20')
+    ) || null
+  );
 }
 
 $(document).ready(() => {
-
   // if ((window.location.pathname !== '/') || (window.location.pathname !== '/posts') ||
   //     (getURLParameter('page') !== null && +getURLParameter('page') !== 1)) {
   //   // const offset = $('#nav').offset().top;
@@ -39,34 +44,65 @@ $(document).ready(() => {
   //   $('#chevron-down').css({ display: 'none' });
   // }
 
+  if (window.location.pathname !== '/posts' || (window.location.pathname === '/posts' && window.location.search !== "")) {
+    $('#header').css({ height: '15rem' });
+    $('#chevron-down').css({ display: 'none' });
+  }
+
   $('#chevron-down').click(() => {
     const offset = $('#nav').offset().top;
     $('html, body').animate({ scrollTop: offset }, 750);
   });
 
-  $('#nav-slider').css({ left: getActiveNavLink().position().left, width: getActiveNavLink().outerWidth() });
-
-  $('.nav__link--text').each(function () {
-    const self = $(this);
-    self.hover(() => {
-      $('#nav-slider').stop().animate({ left: self.position().left, width: self.outerWidth() }, 125);
-    }, () => {
-      const link = getActiveNavLink();
-      $('#nav-slider').stop().animate({ left: link.position().left, width: link.outerWidth() }, 125);
-    });
+  $('#nav-slider').css({
+    left: getActiveNavLink().position().left,
+    width: getActiveNavLink().outerWidth(),
   });
 
-  if (window.location.pathname === '/' || window.location.pathname === '/posts') {
+  $('.nav__link--text').each(function() {
+    const self = $(this);
+    self.hover(
+      () => {
+        $('#nav-slider')
+          .stop()
+          .animate(
+            { left: self.position().left, width: self.outerWidth() },
+            125
+          );
+      },
+      () => {
+        const link = getActiveNavLink();
+        $('#nav-slider')
+          .stop()
+          .animate(
+            { left: link.position().left, width: link.outerWidth() },
+            125
+          );
+      }
+    );
+  });
+
+  if (
+    window.location.pathname === '/' ||
+    window.location.pathname === '/posts'
+  ) {
     $('#page-slider').css({ left: $('#active-page').position().left + 8 });
 
-    $('.pagination__button').each(function () {
+    $('.pagination__button').each(function() {
       const self = $(this);
-      self.hover(() => {
-        $('#page-slider').stop().animate({ left: self.position().left + 8 }, 250);
-      }, () => {
-        const active = $('#active-page');
-        $('#page-slider').stop().animate({ left: active.position().left + 8 }, 250);
-      });
+      self.hover(
+        () => {
+          $('#page-slider')
+            .stop()
+            .animate({ left: self.position().left + 8 }, 250);
+        },
+        () => {
+          const active = $('#active-page');
+          $('#page-slider')
+            .stop()
+            .animate({ left: active.position().left + 8 }, 250);
+        }
+      );
     });
   }
 
@@ -105,5 +141,4 @@ $(document).ready(() => {
       MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
     });
   }
-
 });

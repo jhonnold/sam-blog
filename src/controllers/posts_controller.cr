@@ -5,9 +5,10 @@ class PostsController < ApplicationController
       optional(:page) { |p| !p.to_i?.nil? && (p.to_i - 1) * 5 < count }
     end
 
-    return redirect_to "/" unless query_params.valid?
+    return redirect_to "/posts" unless query_params.valid?
 
     valid_params = query_params.validate!
+    
     page = valid_params.has_key?("page") ? valid_params["page"].to_s.to_i : 1
     offset = (page.to_s.to_i - 1) * 5
 
@@ -53,7 +54,7 @@ class PostsController < ApplicationController
     post = Post.new post_params.validate!
     post.save
 
-    redirect_to "/"
+    redirect_to "/posts"
   end
 
   def edit
@@ -63,5 +64,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def home
+    redirect_to "/posts"
   end
 end
