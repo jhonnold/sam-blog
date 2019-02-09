@@ -14,6 +14,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  box-shadow: 0px 2px 4px 0px #333; 
 
   @include element('header') {
     font-size: 4rem;

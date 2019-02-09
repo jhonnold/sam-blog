@@ -4,19 +4,30 @@
 .nav {
   color: $off-black;
 
+  @include element('border') {
+    width: calc(100% - 4rem);
+    margin: 1rem auto 0;
+    height: 1px;
+    background-color: #efefef;
+  }
+
   @include element('content') {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0 2rem;
-    height: 3rem;
+
+    @media (min-width: 768px) {
+      justify-content: space-between;
+    }
   }
 
   @include element('links') {
     position: relative;
     display: flex;
-    height: 100%;
+    height: 3rem;
+    font-weight: bold;
   }
 
   @include element('link') {
