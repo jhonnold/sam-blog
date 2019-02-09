@@ -20,6 +20,8 @@ class PostsController < ApplicationController
       pages << (p <= 0 || (p - 1) * 5 >= count ? nil : p)
     end
 
+    logged_in = session[:logged_in]
+
     render "index.ecr"
   end
 
