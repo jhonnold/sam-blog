@@ -64,6 +64,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    if (params[:id].to_i?)
+      post = Post.find(params[:id])
+      post.destroy unless post.nil?
+    end
+    return :index
   end
 
   def home

@@ -34,6 +34,20 @@ function getURLParameter(name) {
   );
 }
 
+function deletePost(id) {
+  var shouldDelete = confirm("Are you sure you want to delete this post?");
+
+  if (!shouldDelete) return;
+
+  fetch(`/posts/${id}`, {
+    method: 'DELETE',
+  }).then(() => {
+    window.location = '/posts';
+  });
+}
+
+window.deletePost = deletePost;
+
 $(document).ready(() => {
   // if ((window.location.pathname !== '/') || (window.location.pathname !== '/posts') ||
   //     (getURLParameter('page') !== null && +getURLParameter('page') !== 1)) {
@@ -44,7 +58,10 @@ $(document).ready(() => {
   //   $('#chevron-down').css({ display: 'none' });
   // }
 
-  if (window.location.pathname !== '/posts' || (window.location.pathname === '/posts' && window.location.search !== "")) {
+  if (
+    window.location.pathname !== '/posts' ||
+    (window.location.pathname === '/posts' && window.location.search !== '')
+  ) {
     $('#header').css({ height: '15rem' });
     $('#chevron-down').css({ display: 'none' });
   }

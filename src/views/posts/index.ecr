@@ -2,16 +2,21 @@
   <%- posts.each do |post| %>
     <article class="post">
       <h5 class="post__header"><%= post.title %></h5>
-      <span class="post__meta">
-        <p class="post__meta--italic">posted on</p>
-        <!-- <p class="post__meta--underline">
-          <%= post.category %>
-        </p> -->
-        <!-- <p class="post__meta--italic">on</p> -->
-        <p class="post__meta--underline"><%= format_time(post.created_at) %></p>
-        <p class="post__meta--italic">by</p>
-        <p class="post__meta--underline">Sam Miller</p>
-      </span>
+      <div class="post__actions">
+        <span class="post__meta">
+          <p class="post__meta--italic">posted on</p>
+          <!-- <p class="post__meta--underline">
+            <%= post.category %>
+          </p> -->
+          <!-- <p class="post__meta--italic">on</p> -->
+          <p class="post__meta--underline"><%= format_time(post.created_at) %></p>
+          <p class="post__meta--italic">by</p>
+          <p class="post__meta--underline">Sam Miller</p>
+        </span>
+        <span class="post__buttons">
+          <button onclick="javascript:window.deletePost(<%= post.id %>)">Delete</button>
+        </span>
+      </div>
       <div class="post__content"><%= post.preview %></div>
       <a class="post__readmore" href="/posts/<%= post.id %>">
         Read More
