@@ -11,4 +11,10 @@
     font-weight: bold;
     color: $off-black;
   }
+
+  &__content {
+    margin-top: 1rem;
+    line-height: 1.5rem;
+    color: $dark-gray;
+  }
 }
