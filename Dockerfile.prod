@@ -1,10 +1,6 @@
 FROM amberframework/amber:v0.11.3
 
 WORKDIR /app
-
-COPY shard.* /app/
-RUN shards install --production
-
 COPY . /app
 
 RUN npm install && \

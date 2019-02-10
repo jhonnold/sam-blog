@@ -23,7 +23,7 @@ function getURLParameter(name) {
 }
 
 function deletePost(id) {
-  var shouldDelete = confirm("Are you sure you want to delete this post?");
+  var shouldDelete = confirm('Are you sure you want to delete this post?');
 
   if (!shouldDelete) return;
 
@@ -32,6 +32,19 @@ function deletePost(id) {
   }).then(() => {
     window.location = '/posts';
   });
+}
+
+function isLocalHost(hostname) {
+  return !!(
+    hostname === 'localhost' ||
+    hostname === '[::1]' ||
+    hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
+  );
+}
+
+if (!isLocalHost(window.location.hostname) && location.protocol != 'https:') {
+  location.href =
+    'https:' + window.location.href.substring(window.location.protocol.length);
 }
 
 window.deletePost = deletePost;
