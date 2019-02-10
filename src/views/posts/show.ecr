@@ -1,18 +1,25 @@
 <div class="post-container">
   <article class="post">
     <h5 class="post__header"><%= post.title %></h5>
-    <span class="post__meta">
-      <p class="post__meta--italic">posted on</p>
-      <!-- <a href="/posts?category=<%= post.category %>">
-        <p class="post__meta--underline">
-          <%= post.category %>
-        </p>
-      </a>
-      <p class="post__meta--italic">on</p> -->
-      <p class="post__meta--underline"><%= format_time(post.created_at) %></p>
-      <p class="post__meta--italic">by</p>
-      <p class="post__meta--underline">Sam Miller</p>
-    </span>
+    <div class="post__actions">
+      <span class="post__meta">
+        <p class="post__meta--italic">posted on</p>
+        <!-- <a href="/posts?category=<%= post.category %>">
+          <p class="post__meta--underline">
+            <%= post.category %>
+          </p>
+        </a>
+        <p class="post__meta--italic">on</p> -->
+        <p class="post__meta--underline"><%= format_time(post.created_at) %></p>
+        <p class="post__meta--italic">by</p>
+        <p class="post__meta--underline">Sam Miller</p>
+      </span>
+      <span class="post__buttons">
+        <%- if logged_in %>
+          <a onclick="javascript:window.deletePost(<%= post.id %>)">Delete</a>
+        <%- end %>
+      </span>
+    </div>
     <div class="post__content"><%= post.body %></div>
   </article>
   <div class="post__back-container">

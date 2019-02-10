@@ -11,6 +11,7 @@
 @import './pagination.scss';
 @import './footer.scss';
 @import './newpost.scss';
+@import './about.scss';
 
 $font-family: 'Lato', sans-serif;
 
@@ -24,6 +25,7 @@ html {
 html, body {
   padding: 0;
   margin: 0;
+  background: linear-gradient(to right, $off-white, darken($off-white, 3%));
 }
 
 h1, h2, h3, h4, h5, h6, p, input { margin: 0; }
@@ -45,38 +47,37 @@ main {
   flex-wrap: wrap;
 }
 
-.posts-container {
+.container {
   flex: 1;
   padding: 0 2rem;
-  max-width: calc(100% - 4rem);
+  max-width: 1200px;
+  width: calc(100% - 4rem);
 }
 
-.post-container {
+.sub-container {
   flex: 1;
-  padding: 0 2rem;
+  margin: 0 2rem;
   max-width: calc(100% - 4rem);
-}
-
-@media (min-width: 768px) {
-  .posts-container {
-    max-width: calc(75% - 4rem);
-  }
-
-  .post-container {
-    max-width: calc(100% - 4rem);
-  }
-
-  .new-post-container {
-    max-width: calc(75% - 4rem);
-  }
+  border-bottom: 1px solid rgba($off-black, 0.0625);
 }
 
 .sidebar-container {
   width: 100%;
+  padding-top: 3rem;
 }
 
 @media (min-width: 768px) {
+  .sub-container {
+    max-width: calc(75% - 4rem);
+  }
+
   .sidebar-container {
     width: 25%;
   }
+}
+
+
+.posts-container, .post-container, .new-post-container {
+  @extend .sub-container;
+  padding-top: 3rem;
 }

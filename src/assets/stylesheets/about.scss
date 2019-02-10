@@ -1,0 +1,14 @@
+@import 'colors';
+
+.about {
+  &__container {
+    @extend .sub-container;
+    padding-top: 3rem !important;
+  }
+
+  &__header {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: $off-black;
+  }
+}

@@ -20,6 +20,10 @@
   @include element('header') {
     font-size: 4rem;
     font-weight: bold;
+    color: $off-white;
+    background: -webkit-linear-gradient($off-white, #aaa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   @include element('subheader') {

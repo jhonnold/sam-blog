@@ -26,6 +26,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    logged_in = session[:logged_in]
     if (params[:id].to_i?)
       post = Post.find(params[:id])
       return redirect_to "/posts" if post.nil?
@@ -77,7 +78,7 @@ class PostsController < ApplicationController
       post = Post.find(params[:id])
       post.destroy unless post.nil?
     end
-    redirect_back
+    return :index
   end
 
   def home

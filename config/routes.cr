@@ -31,7 +31,7 @@ Amber::Server.configure do
     get "/", PostsController, :home
     resources "/posts", PostsController
 
-    get "/contact", HomeController, :contact
+    # get "/contact", HomeController, :contact
     get "/about", HomeController, :about
     get "/logout", HomeController, :logout
     post "/login", HomeController, :login

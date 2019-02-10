@@ -2,8 +2,9 @@
 @import 'colors';
 
 .footer {
-  background: $off-black;
+  background: linear-gradient(to right, $off-black, darken($off-black, 3%));
   color: $off-white;
+  box-shadow: 0 -2px 4px 0 #333;
 
   @include element('content-container') {
     padding: 4rem 2rem;
