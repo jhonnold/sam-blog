@@ -1,4 +1,4 @@
-# sam-blog
+# Sam Miller's Blog
 
 [![Amber Framework](https://img.shields.io/badge/using-amber_framework-orange.svg)](https://amberframework.org)
 
@@ -8,38 +8,36 @@ This is a project written using [Amber](https://amberframework.org). Enjoy!
 
 These instructions will get a copy of this project running on your machine for development and testing purposes.
 
-Please see [deployment](https://docs.amberframework.org/amber/deployment) for notes on deploying the project in production.
-
-## Prerequisites
+### Prerequisites
 
 This project requires [Crystal](https://crystal-lang.org/) ([installation guide](https://crystal-lang.org/docs/installation/)).
 
-## Development
+This project requires [Docker](https://docs.docker.com/install/).
 
-To start your Amber server:
+### Development
 
-1. Install dependencies with `shards install`
-2. Build executables with `shards build`
-3. Create and migrate your database with `bin/amber db create migrate`. Also see [creating the database](https://docs.amberframework.org/amber/guides/create-new-app#creating-the-database).
-4. Start Amber server with `bin/amber watch`
+Development is done with Docker
 
-Now you can visit http://localhost:3000/ from your browser.
+To start up the app in development:
 
-Getting an error message you need help decoding? Check the [Amber troubleshooting guide](https://docs.amberframework.org/amber/troubleshooting), post a [tagged message on Stack Overflow](https://stackoverflow.com/questions/tagged/amber-framework), or visit [Amber on Gitter](https://gitter.im/amberframework/amber).
+1. Build the containers with `docker-compose build`
+2. Run the containers with `docker-compose up`
+3. Visit [localhost:3000](http://localhost:3000) to see the app!
 
-Using Docker? Please check [Amber Docker guides](https://docs.amberframework.org/amber/guides/docker).
+### Production
 
-## Tests
+Production is also served via Docker
 
-To run the test suite:
+This will launch the app on port 80 and bind it to 0.0.0.0
 
-```
-crystal spec
-```
+1. Build the containers with `docker-compose -p sam-blog-prod -f docker-compose.prod.yml build`
+2. Run the containers with `docker-compose -p sam-blog-prod -f docker-compose.prod.yml up -d`
+3. Visit [localhost](http://localhost) to see the production app!
+4. Logs are visible with `docker-compose -p sam-blog-prod logs -f --tail=500`
 
 ## Contributing
 
-1. Fork it ( https://github.com/your-github-user/sam-blog/fork )
+1. Fork it ( https://github.com/jhonnold/sam-blog/fork )
 2. Create your feature branch ( `git checkout -b my-new-feature` )
 3. Commit your changes ( `git commit -am 'Add some feature'` )
 4. Push to the branch ( `git push origin my-new-feature` )
@@ -47,4 +45,4 @@ crystal spec
 
 ## Contributors
 
-- [your-github-user](https://github.com/your-github-user) Jay Honnold - creator, maintainer
+- [jhonnold](https://github.com/jhonnold) Jay Honnold - creator, maintainer
