@@ -14,10 +14,6 @@ services:
       - 80:80
     links:
       - db
-    volumes:
-    - .:/app
-    - nodes:/app/node_modules
-    - shards:/app/lib
 
   migrate:
     build:
@@ -27,8 +23,6 @@ services:
     command: bash -c 'while ! nc -q 1 db 5432 </dev/null; do sleep 1; done && amber db migrate'
     environment:
       AMBER_ENV: production
-    volumes:
-      - .:/app
     links:
       - db
 
@@ -42,5 +36,3 @@ services:
 
 volumes:
   db:
-  nodes:
-  shards:
