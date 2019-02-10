@@ -8,6 +8,8 @@ RUN shards install --production
 COPY . /app
 
 RUN npm install && \
+    npm uninstall ajv && \
+    npm install ajv@6.8.1 && \
     npm run release && \
     rm -rf /app/node_modules
 
