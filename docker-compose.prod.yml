@@ -18,6 +18,7 @@ services:
       - .:/app
       - nodes:/app/node_modules
       - shards:/app/lib
+      - /app/bin
 
   migrate:
     build:
